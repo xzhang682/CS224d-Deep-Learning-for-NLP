@@ -6,7 +6,8 @@ def sigmoid(x):
     """
     
     ### YOUR CODE HERE
-    raise NotImplementedError
+    # raise NotImplementedError
+    x = 1/(1+np.exp(-x))
     ### END YOUR CODE
     
     return x
@@ -19,7 +20,8 @@ def sigmoid_grad(f):
     """
     
     ### YOUR CODE HERE
-    raise NotImplementedError
+    # raise NotImplementedError
+    f = f*(1-f)
     ### END YOUR CODE
     
     return f
@@ -50,8 +52,15 @@ def test_sigmoid():
     """
     print "Running your tests..."
     ### YOUR CODE HERE
-    raise NotImplementedError
+    # raise NotImplementedError
+    x = np.array([0,100])
+    f = sigmoid(x)
+    g = sigmoid_grad(f)
+    print(f)
+    assert np.max(f - np.array([0.5, 1])) <= 1e-6
+    assert np.max(g - np.array([0.25, 0])) <= 1e-6
     ### END YOUR CODE
+    
 
 if __name__ == "__main__":
     test_sigmoid_basic();
